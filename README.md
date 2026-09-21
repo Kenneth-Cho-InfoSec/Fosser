@@ -1,7 +1,7 @@
 # Fosser — Open-Source App Discovery for F-Droid
 
 <p align="center">
-  <img src="docs/fosser-icon.png" width="128" alt="Fosser app icon">
+  <img src="docs/fosser-icon.png" width="400" alt="Fosser app icon">
 </p>
 
 Fosser is a privacy-friendly Android app for discovering open-source apps from F-Droid
