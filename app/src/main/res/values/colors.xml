@@ -1,0 +1,14 @@
+<resources>
+    <!-- Fosser brand: deep teal + warm amber on dark slate. Original identity. -->
+    <color name="fosser_teal">#0E7C6B</color>
+    <color name="fosser_teal_dark">#0A5C4F</color>
+    <color name="fosser_amber">#F2A33C</color>
+    <color name="fosser_ink">#10181A</color>
+    <color name="fosser_slate">#1C2A2E</color>
+    <color name="fosser_mist">#EAF3F1</color>
+    <color name="fosser_like">#2E9E5B</color>
+    <color name="fosser_pass">#D64545</color>
+    <color name="fosser_open">#2F6FED</color>
+    <!-- Adaptive launcher icon background (separate layer, always white) -->
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

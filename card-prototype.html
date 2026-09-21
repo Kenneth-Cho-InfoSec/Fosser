@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fosser &mdash; Card prototype</title>
+<style>
+  :root{
+    --ink:#10181A; --card:#223237; --teal:#0E7C6B; --amber:#F2A33C;
+    --mist:#EAF3F1; --muted:#9DB4AF; --like:#2E9E5B; --pass:#D64545; --open:#2F6FED;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ink); color:var(--mist); font-family:system-ui,-apple-system,Roboto,"Segoe UI",sans-serif; margin:0; padding:24px;}
+  h1{font-size:22px; margin:0 0 4px}
+  .sub{color:var(--muted); margin:0 0 16px; font-size:14px}
+  .toggles{display:flex; gap:8px; margin:0 0 20px; flex-wrap:wrap}
+  .toggles button{background:#1C2A2E; color:var(--mist); border:1px solid #33474c; border-radius:999px; padding:8px 16px; font-size:14px; cursor:pointer}
+  .toggles button.active{background:var(--teal); border-color:var(--teal)}
+  .deck{display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start}
+  .card{position:relative; width:400px; max-width:100%; background:var(--card); background-size:cover; background-position:center; border-radius:20px; padding:20px; box-shadow:0 8px 24px rgba(0,0,0,.45)}
+  .head{display:flex; gap:12px; align-items:flex-start}
+  .icon{width:72px; height:72px; border-radius:18px; flex:0 0 72px; background:rgba(255,255,255,.08); object-fit:contain}
+  .icon-fallback{width:72px; height:72px; border-radius:18px; flex:0 0 72px; background:rgba(242,163,60,.2); color:var(--amber); display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:800}
+  .titleblock{min-width:0}
+  .name{font-size:21px; font-weight:800; line-height:1.2}
+  .summary{color:var(--mist); opacity:.8; font-size:14px; margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+  .updated{color:var(--muted); font-size:12px; margin-top:4px}
+  .pills{display:flex; gap:8px; margin:12px 0 4px; flex-wrap:wrap}
+  .pill{font-size:12px; border:1px solid #3a5257; border-radius:999px; padding:4px 12px; color:var(--mist); background:rgba(255,255,255,.06)}
+  .body{display:flex; gap:12px; margin-top:12px}
+  .perms{flex:1.15; min-width:0}
+  .perms h3, .shotbox h3{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 8px}
+  .perms ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px}
+  .perms li{font-family:ui-monospace,monospace; font-size:12px; background:rgba(0,0,0,.3); border-radius:8px; padding:5px 8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .perms .more{font-size:12px; color:var(--muted)}
+  .shotbox{flex:1; min-width:0}
+  .shotbox img{width:100%; height:220px; object-fit:cover; object-position:top; border-radius:12px; display:block; background:#000}
+  .fallback{font-size:13px; font-style:italic; color:var(--mist); opacity:.85; border:1px dashed #3a5257; border-radius:12px; padding:10px; height:220px; overflow:hidden}
+  .fallback .tag{display:block; font-style:normal; font-size:11px; color:var(--muted); margin-bottom:6px}
+  .foot{display:flex; justify-content:space-between; align-items:center; margin-top:14px; font-size:12px; color:var(--muted)}
+  .stamp{position:absolute; top:18px; font-weight:900; font-size:22px; padding:6px 14px; border-radius:999px; display:none}
+  .card[data-overlay="pass"] .stamp.pass{display:block; left:16px; transform:rotate(-12deg); color:var(--pass); background:rgba(214,69,69,.12); border:2px solid var(--pass)}
+  .card[data-overlay="like"] .stamp.like{display:block; right:16px; transform:rotate(12deg); color:var(--like); background:rgba(46,158,91,.12); border:2px solid var(--like)}
+  .card[data-overlay="open"] .stamp.open{display:block; left:50%; transform:translateX(-50%); color:var(--open); background:rgba(47,111,237,.12); border:2px solid var(--open); font-size:18px}
+  .legend{margin-top:28px; max-width:860px; font-size:14px; color:var(--muted)}
+  .legend code{color:var(--mist); font-size:13px}
+  table{border-collapse:collapse; margin-top:8px}
+  td{border:1px solid #33474c; padding:6px 10px; font-size:13px}
+  td:first-child{color:var(--amber); white-space:nowrap}
+</style>
+</head>
+<body>
+<h1>Fosser &mdash; Card prototype</h1>
+<p class="sub">Real F-Droid data (Termux, NewPipe, Termux:API). Toggle an overlay to preview swipe feedback on the top card.</p>
+<div class="toggles" id="toggles">
+  <button data-ov="none" class="active">No overlay</button>
+  <button data-ov="pass">PASS (&larr;)</button>
+  <button data-ov="like">LIKE (&rarr;)</button>
+  <button data-ov="open">OPEN F-DROID (&uarr;)</button>
+</div>
+<div class="deck" id="deck"></div>
+<div class="legend">
+  <strong style="color:var(--mist)">Layout map (your spec):</strong>
+  <table>
+    <tr><td>Top-left</td><td>App icon (letter avatar if the index has none)</td></tr>
+    <tr><td>Top-right</td><td>App name, short description and last-updated date underneath</td></tr>
+    <tr><td>Below header</td><td>The three pills: <code>Open Source</code> + license + first category</td></tr>
+    <tr><td>Bottom-left</td><td>Permissions required (short names, first 5 + &ldquo;+N more&rdquo;)</td></tr>
+    <tr><td>Right column</td><td>First screenshot; if none, first 50 words of the about text (see Termux:API card)</td></tr>
+  </table>
+  <p style="font-size:12px">Card texture: your three Unsplash photos (Veitch, Stander, Radojcic), compressed under 100KB each, picked at random per card under a dark scrim.</p>
+</div>
+<script>
+const APPS = [{"package": "com.termux", "name": "Termux", "summary": "Terminal emulator with packages", "desc": "Termux combines powerful terminal emulation with an extensive Linux package\ncollection.\n\n* Enjoy the bash and zsh shells.\n* Edit files with nano and vim.\n* Access servers over ssh.\n* Compile code with gcc and clang.\n* Use the python console as a pocket calculator.\n* Check out projects with git and subversion.\n* Run text-based games with frotz.\n\nAt first start a small base system is downloaded - desired packages can then be\ninstalled using the apt package manager known from the Debian and Ubuntu Linux\ndistributions. Access the built-in help by long-pressing anywhere on the\nterminal and selecting the Help menu option to learn more.\n\nRead help online: <a href=\"https://wiki.termux.com/\">https://wiki.termux.com/<\/a>\n\nReddit Community: <a href=\"https://termux.com/community\">https://termux.com/community<\/a>", "dev": "Tarek Sander", "lic": "GPL-3.0-only", "cat": "Development", "ver": "0.119.0-beta.3", "updated": "May 29, 2025", "size": "109.6 MB", "icon": "https://f-droid.org/repo/com.termux/en-US/icon_7jMZ7XD80oeucmGEaTwktIRZexLtGWvJfKdVD6Wu2SI=.png", "shot": "https://f-droid.org/repo/com.termux/en-US/phoneScreenshots/1.jpg", "perms": ["ACCESS_NETWORK_STATE", "INTERNET", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "MANAGE_EXTERNAL_STORAGE", "WAKE_LOCK", "VIBRATE", "FOREGROUND_SERVICE", "REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", "SYSTEM_ALERT_WINDOW", "READ_LOGS", "DUMP", "WRITE_SECURE_SETTINGS", "REQUEST_INSTALL_PACKAGES", "RECEIVE_BOOT_COMPLETED", "PACKAGE_USAGE_STATS", "com.android.alarm.permission.SET_ALARM"]}, {"package": "org.schabi.newpipe", "name": "NewPipe", "summary": "Lightweight YouTube frontend", "desc": "NewPipe does not use any Google framework libraries, or the YouTube API. It only parses the website in order to gain the information it needs. Therefore this app can be used on devices without Google Services installed. Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n", "dev": "Team NewPipe", "lic": "GPL-3.0-or-later", "cat": "Internet", "ver": "0.29.1", "updated": "Aug 21, 2026", "size": "11.0 MB", "icon": "https://f-droid.org/repo/org.schabi.newpipe/en-US/icon_OHy4y1W-fJCNhHHOBCM9V_cxZNJJgbcNkB-x7UDTY9Q=.png", "shot": "https://f-droid.org/repo/org.schabi.newpipe/en-US/phoneScreenshots/00.png", "perms": ["INTERNET", "WAKE_LOCK", "ACCESS_NETWORK_STATE", "WRITE_EXTERNAL_STORAGE", "SYSTEM_ALERT_WINDOW", "FOREGROUND_SERVICE", "FOREGROUND_SERVICE_DATA_SYNC", "FOREGROUND_SERVICE_MEDIA_PLAYBACK", "POST_NOTIFICATIONS", "RECEIVE_BOOT_COMPLETED", "org.schabi.newpipe.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION", "READ_EXTERNAL_STORAGE"]}, {"package": "com.termux.api", "name": "Termux:API", "summary": "Access Android functions from Termux", "desc": "Expose basic Android functionality like sending SMS or accessing GPS data to the\nhttps://f-droid.org/packages/com.termux app. This is an add-on which requires that the main Termux app is\ninstalled to use.\n\n* Read and send sms messages from your terminal.\n* Access device GPS location sensor from scripts.\n* Pipe the result of commands into the device text-to-speech engine.\n* Vibrate the device when something interesting happens.\n* Access the system clipboard from shell scripts.\n* List contacts from the system contact list.\n\nBesides installing this app an additional package is required to install inside\nTermux:\n\n$ apt install termux-api", "dev": "Tarek Sander", "lic": "GPL-3.0-only", "cat": "Development", "ver": "0.53.0", "updated": "Sep 05, 2025", "size": "3.8 MB", "icon": null, "shot": null, "perms": ["ACCESS_BACKGROUND_LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "ACCESS_NETWORK_STATE", "ACCESS_WIFI_STATE", "BODY_SENSORS", "CALL_PHONE", "CAMERA", "CHANGE_WIFI_STATE", "INTERNET", "MANAGE_EXTERNAL_STORAGE", "NFC", "READ_CALL_LOG", "READ_CONTACTS", "READ_PHONE_STATE", "READ_PRIVILEGED_PHONE_STATE", "READ_SMS", "READ_EXTERNAL_STORAGE", "RECEIVE_BOOT_COMPLETED", "RECORD_AUDIO", "REQUEST_DELETE_PACKAGES", "REQUEST_IGNORE_BATTERY_OPTIMIZATIONS", "REQUEST_INSTALL_PACKAGES", "SEND_SMS", "SET_WALLPAPER", "SYSTEM_ALERT_WINDOW", "TRANSMIT_IR", "USE_BIOMETRIC", "VIBRATE", "WRITE_SETTINGS", "WRITE_EXTERNAL_STORAGE", "DUMP", "PACKAGE_USAGE_STATS", "USE_FINGERPRINT", "com.termux.api.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"]}];
+const TEX = ['prototype-assets/card-tex-wave.jpg', 'prototype-assets/card-tex-beach.jpg', 'prototype-assets/card-tex-coast.jpg'];
+const deck = document.getElementById('deck');
+APPS.forEach((app, idx) => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  if (idx === 0) card.id = 'topcard';
+  card.dataset.overlay = 'none';
+  const tex = TEX[Math.floor(Math.random() * TEX.length)];
+  card.style.backgroundImage = 'linear-gradient(rgba(34,50,55,.90), rgba(34,50,55,.93)), url("' + tex + '")';
+
+  const head = document.createElement('div'); head.className = 'head';
+  if (app.icon) {
+    const img = document.createElement('img');
+    img.className = 'icon'; img.src = app.icon; img.alt = app.name + ' icon'; img.loading = 'lazy';
+    head.appendChild(img);
+  } else {
+    const fb = document.createElement('div');
+    fb.className = 'icon-fallback'; fb.textContent = (app.name || '?').trim().charAt(0).toUpperCase();
+    head.appendChild(fb);
+  }
+  const tb = document.createElement('div'); tb.className = 'titleblock';
+  const nm = document.createElement('div'); nm.className = 'name'; nm.textContent = app.name;
+  const sm = document.createElement('div'); sm.className = 'summary'; sm.textContent = app.summary || '';
+  const ud = document.createElement('div'); ud.className = 'updated';   ud.textContent = 'Updated ' + app.updated + ' · ' + app.size;
+  tb.append(nm, sm, ud); head.appendChild(tb); card.appendChild(head);
+
+  const pills = document.createElement('div'); pills.className = 'pills';
+  ['Open Source', app.lic, app.cat].forEach(t => {
+    const p = document.createElement('span'); p.className = 'pill'; p.textContent = t;
+    pills.appendChild(p);
+  });
+  card.appendChild(pills);
+
+  const body = document.createElement('div'); body.className = 'body';
+  const perms = document.createElement('div'); perms.className = 'perms';
+  const ph = document.createElement('h3'); ph.textContent = 'Permissions'; perms.appendChild(ph);
+  const ul = document.createElement('ul');
+  app.perms.slice(0, 5).forEach(p => {
+    const li = document.createElement('li'); li.textContent = p; ul.appendChild(li);
+  });
+  perms.appendChild(ul);
+  if (app.perms.length > 5) {
+    const more = document.createElement('div'); more.className = 'more';
+    more.textContent = '+' + (app.perms.length - 5) + ' more';
+    perms.appendChild(more);
+  }
+  body.appendChild(perms);
+
+  const shot = document.createElement('div'); shot.className = 'shotbox';
+  const sh = document.createElement('h3'); sh.textContent = 'Preview'; shot.appendChild(sh);
+  if (app.shot) {
+    const img = document.createElement('img'); img.src = app.shot; img.alt = app.name + ' screenshot'; img.loading = 'lazy';
+    shot.appendChild(img);
+  } else {
+    const fb = document.createElement('div'); fb.className = 'fallback';
+    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = 'No screenshots — about preview';
+    const words = (app.desc || '').split(/\s+/).slice(0, 50).join(' ');
+    fb.append(tag, document.createTextNode(words + '\u2026'));
+    shot.appendChild(fb);
+  }
+  body.appendChild(shot);
+  card.appendChild(body);
+
+  const foot = document.createElement('div'); foot.className = 'foot';
+  const by = document.createElement('span'); by.textContent = 'by ' + app.dev;
+  const vn = document.createElement('span'); vn.textContent = 'v' + app.ver;
+  foot.append(by, vn); card.appendChild(foot);
+
+  [['pass','PASS'],['like','LIKE'],['open','\u2191 OPEN F-DROID']].forEach(([cls, txt]) => {
+    const s = document.createElement('div'); s.className = 'stamp ' + cls; s.textContent = txt;
+    card.appendChild(s);
+  });
+  deck.appendChild(card);
+});
+document.getElementById('toggles').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#toggles button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById('topcard').dataset.overlay = b.dataset.ov;
+});
+</script>
+</body>
+</html>

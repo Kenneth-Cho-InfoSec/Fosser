@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Fosser</string>
+    <string name="tagline">Discover open-source apps</string>
+    <string name="pass">Pass</string>
+    <string name="save">Save</string>
+    <string name="open_fdroid">Open F-Droid</string>
+    <string name="open_details">Open details</string>
+    <string name="retry">Retry</string>
+    <string name="no_more_apps">You\'ve explored everything for now.\nPull to refresh or reset history in Settings.</string>
+    <string name="offline_banner">You\'re offline. Showing apps already downloaded to Fosser.</string>
+    <string name="saved_title">Saved</string>
+    <string name="history_title">History</string>
+    <string name="settings_title">Settings</string>
+    <string name="details_open_fdroid">Open in F-Droid / Browser</string>
+</resources>

@@ -1,0 +1,15 @@
+# Local secrets — NEVER commit these
+local.properties
+keystore/
+*.jks
+*.keystore
+
+# Build outputs
+build/
+app/build/
+.gradle/
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store

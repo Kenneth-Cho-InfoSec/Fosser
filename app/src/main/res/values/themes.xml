@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.Fosser" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/fosser_ink</item>
+        <item name="android:statusBarColor">@color/fosser_ink</item>
+        <item name="android:navigationBarColor">@color/fosser_ink</item>
+    </style>
+</resources>
