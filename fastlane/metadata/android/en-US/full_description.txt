@@ -1,0 +1,3 @@
+Fosser is a privacy-friendly discovery client for F-Droid. Browse open-source Android apps as swipeable cards: swipe left to pass, right to save, up to open the app's F-Droid page, or tap for full details with screenshots, permissions and source links.
+
+Everything works locally on your device. Fosser caches the F-Droid catalog for offline use, keeps your swipe history and saved apps in a local database, and ranks new cards with a small on-device recommendation engine. No account, no analytics, no ads.

@@ -1,0 +1,1 @@
+First public release: swipe-card discovery over the F-Droid catalog, app details with screenshots and permissions, saved apps, history, offline cache, on-device recommendations, theme and accent settings.
