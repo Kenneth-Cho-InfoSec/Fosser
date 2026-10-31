@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Fosser is an Android app for discovering open-source apps from F-Droid with a swipe-card interface. Save ideas locally, then open the listing when you are ready."
+    />
+    <meta name="theme-color" content="#251b31" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Fosser — find your next open-source app"
+    />
+    <meta
+      property="og:description"
+      content="A swipe-first way to explore apps in the F-Droid catalogue."
+    />
+    <meta
+      property="og:image"
+      content="https://kenneth-cho-infosec.github.io/Fosser/assets/fosser-icon.png"
+    />
+    <title>Fosser — find your next open-source app</title>
+    <link rel="icon" href="assets/fosser-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Fosser home">
+        <img src="assets/fosser-icon.png" width="44" height="44" alt="" />
+        <span>fosser<span class="brand__period">.</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a href="#your-list">Your list</a>
+        <a href="#compare">Compare</a>
+        <a href="#details">Project details</a>
+      </nav>
+      <a
+        class="header-cta"
+        href="https://github.com/Kenneth-Cho-InfoSec/Fosser/releases/tag/v1.0"
+      >
+        Get Fosser <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow">
+            <span></span> OPEN-SOURCE APP DISCOVERY · ANDROID
+          </p>
+          <h1 id="hero-title">Meet your next <em>open-source app.</em></h1>
+          <p class="hero__lead">
+            Fosser turns the F-Droid catalogue into a hands-on discovery deck.
+            Pass, save for later, or open an app’s listing when something
+            catches your eye.
+          </p>
+          <div class="hero__actions">
+            <a
+              class="button button--lime"
+              href="https://github.com/Kenneth-Cho-InfoSec/Fosser/releases/tag/v1.0"
+            >
+              Get version 1.0 <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button--outline" href="#how"
+              >See how it works <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero__note">
+            Android 8.0+ <span>·</span> No account <span>·</span> Catalog
+            refresh uses the network
+          </p>
+        </div>
+
+        <div
+          class="deck-art"
+          role="img"
+          aria-label="Illustration of Fosser’s pass, save, and open choices"
+        >
+          <div
+            class="deck-art__orbit deck-art__orbit--one"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="deck-art__orbit deck-art__orbit--two"
+            aria-hidden="true"
+          ></div>
+          <article
+            class="mini-card mini-card--back mini-card--back-left"
+            aria-hidden="true"
+          >
+            <span class="mini-card__stamp">PASS</span>
+          </article>
+          <article
+            class="mini-card mini-card--back mini-card--back-right"
+            aria-hidden="true"
+          >
+            <span class="mini-card__stamp">SAVE</span>
+          </article>
+          <article class="mini-card mini-card--front">
+            <div class="mini-card__top">
+              <span>FOSSER / DISCOVER</span>
+              <span class="live-dot" aria-hidden="true"></span>
+            </div>
+            <div class="mini-card__mark" aria-hidden="true"><i></i></div>
+            <p class="mini-card__kicker">Illustrative app card</p>
+            <h2>A useful app, one swipe away.</h2>
+            <p class="mini-card__copy">
+              Get the essentials first: what it does, who made it, its licence,
+              category and requested permissions.
+            </p>
+            <div class="mini-card__tags" aria-hidden="true">
+              <span>OPEN SOURCE</span><span>APP DETAILS</span>
+            </div>
+            <div class="mini-card__actions" aria-hidden="true">
+              <span>× <small>PASS</small></span>
+              <span>♥ <small>SAVE</small></span>
+              <span>↑ <small>OPEN</small></span>
+            </div>
+          </article>
+          <span class="deck-label deck-label--left">NOT FOR ME <b>←</b></span>
+          <span class="deck-label deck-label--right"><b>→</b> KEEP THIS</span>
+          <span class="deck-caption">A CATALOGUE, WITH ROOM TO BROWSE.</span>
+        </div>
+
+        <div class="hero__base" aria-hidden="true">
+          <span>DISCOVER</span><span>DECIDE</span><span>FOLLOW THROUGH</span>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="What Fosser does">
+        <p><span>01</span> Discover from F-Droid’s app catalogue</p>
+        <p><span>02</span> Build recommendations from your swipes</p>
+        <p><span>03</span> Open the listing when you choose</p>
+      </section>
+
+      <section class="section how" id="how" aria-labelledby="how-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A lighter way to explore</p>
+            <h2 id="how-title">Three directions.<br /><em>Your call.</em></h2>
+          </div>
+          <p>
+            Each card gives you a quick first look. Use a swipe or the buttons;
+            both lead to the same action. You stay in charge of what happens
+            next.
+          </p>
+        </div>
+
+        <div class="action-grid">
+          <article class="action-card action-card--pass">
+            <div class="action-card__symbol" aria-hidden="true">×</div>
+            <p class="action-card__number">LEFT / PASS</p>
+            <h3>Not today.</h3>
+            <p>Move on. The pass is added to your local swipe history.</p>
+          </article>
+          <article class="action-card action-card--save">
+            <div class="action-card__symbol" aria-hidden="true">♥</div>
+            <p class="action-card__number">RIGHT / SAVE</p>
+            <h3>Keep the idea.</h3>
+            <p>Save a listing to revisit in Fosser’s Saved screen.</p>
+          </article>
+          <article class="action-card action-card--open">
+            <div class="action-card__symbol" aria-hidden="true">↑</div>
+            <p class="action-card__number">UP / OPEN</p>
+            <h3>Take a closer look.</h3>
+            <p>
+              Open the app’s F-Droid page in your browser, with an in-app web
+              view as a fallback.
+            </p>
+          </article>
+        </div>
+        <p class="section-footnote">
+          Opening a listing is not an install. Fosser helps you discover and
+          save apps; installation and updates are handled by your chosen app
+          source.
+        </p>
+      </section>
+
+      <section
+        class="signal-section"
+        id="your-list"
+        aria-labelledby="signal-title"
+      >
+        <div class="signal-copy">
+          <p class="eyebrow">Your list, over time</p>
+          <h2 id="signal-title">
+            The more you browse, the more it feels <em>like yours.</em>
+          </h2>
+          <p>
+            Fosser’s deterministic recommendation engine learns from the
+            category, developer, licence and words in app descriptions you react
+            to. It ranks unseen apps, then spreads out similar categories so the
+            deck does not get stuck in one lane.
+          </p>
+          <div class="signal-note">
+            <span class="signal-note__icon" aria-hidden="true">⌁</span>
+            <p>
+              <strong>No account to tune.</strong> Your swipe history and saved
+              list are stored in the app’s local Room database.
+            </p>
+          </div>
+        </div>
+        <div class="signal-visual" aria-hidden="true">
+          <p class="signal-visual__label">A SIMPLE, LOCAL SIGNAL</p>
+          <div class="signal-row">
+            <span>Category</span>
+            <div><i style="--fill: 82%"></i></div>
+            <b>↗</b>
+          </div>
+          <div class="signal-row">
+            <span>Developer</span>
+            <div><i style="--fill: 62%"></i></div>
+            <b>↗</b>
+          </div>
+          <div class="signal-row">
+            <span>Licence</span>
+            <div><i style="--fill: 43%"></i></div>
+            <b>↗</b>
+          </div>
+          <div class="signal-row signal-row--quiet">
+            <span>Description</span>
+            <div><i style="--fill: 30%"></i></div>
+            <b>↗</b>
+          </div>
+          <div class="signal-visual__rule"></div>
+          <p class="signal-visual__result">
+            <span>NEXT IN THE DECK</span><b>More to explore <span>↗</span></b>
+          </p>
+          <p class="signal-visual__caption">
+            Conceptual view of recommendation signals
+          </p>
+        </div>
+      </section>
+
+      <section class="section data-section" aria-labelledby="data-title">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="eyebrow">Useful context, not a wall of text</p>
+            <h2 id="data-title">A better first <em>look.</em></h2>
+          </div>
+          <p>
+            Browse the details that help you make an informed choice before
+            leaving the deck.
+          </p>
+        </div>
+        <div class="detail-grid">
+          <article>
+            <span class="detail-icon" aria-hidden="true">01</span>
+            <h3>What it does</h3>
+            <p>
+              App name, summary, description and available screenshots from the
+              catalogue.
+            </p>
+          </article>
+          <article>
+            <span class="detail-icon" aria-hidden="true">02</span>
+            <h3>Where it comes from</h3>
+            <p>
+              Developer, licence, category and links back to the app’s F-Droid
+              page and project.
+            </p>
+          </article>
+          <article>
+            <span class="detail-icon" aria-hidden="true">03</span>
+            <h3>What it asks for</h3>
+            <p>
+              Permissions listed in the F-Droid index, surfaced on the card
+              before you open the listing.
+            </p>
+          </article>
+          <article>
+            <span class="detail-icon" aria-hidden="true">04</span>
+            <h3>What is new</h3>
+            <p>
+              Version, last-updated date and APK size when those fields are
+              available.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="guide-title">
+        <div class="guide-topline">
+          <span>YOUR FIRST FEW MINUTES</span><span>01 — 04</span>
+        </div>
+        <div class="guide-heading">
+          <p class="eyebrow">Start with a browse</p>
+          <h2 id="guide-title">From download<br />to <em>discovery.</em></h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Get the release</h3>
+              <p>
+                Download the APK from Fosser’s GitHub release. Android may ask
+                you to allow installs from the app you used to open it. For
+                local release builds, Gradle uses a debug key when release
+                credentials are absent; check the release notes for the
+                published APK details.
+              </p>
+            </div>
+            <a
+              href="https://github.com/Kenneth-Cho-InfoSec/Fosser/releases/tag/v1.0"
+              aria-label="Open Fosser version 1.0 release"
+              >↗</a
+            >
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Let the catalogue load</h3>
+              <p>
+                Fosser reads the official F-Droid index and caches the app data.
+                The initial index is large—about 60 MB according to the project
+                README.
+              </p>
+            </div>
+            <a
+              href="https://f-droid.org/repo/index-v2.json"
+              aria-label="View the F-Droid signed index"
+              >↗</a
+            >
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Try the three actions</h3>
+              <p>
+                Swipe left to pass, right to save, or up to open the F-Droid
+                listing. Buttons offer the same choices.
+              </p>
+            </div>
+            <span class="step-mark" aria-hidden="true">↔</span>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>Choose where to install</h3>
+              <p>
+                Fosser opens the listing; it does not install or update apps.
+                Continue with F-Droid or another app source you trust.
+              </p>
+            </div>
+            <a
+              href="https://f-droid.org/packages/org.fdroid.fdroid/"
+              aria-label="Learn about the official F-Droid client"
+              >↗</a
+            >
+          </li>
+        </ol>
+      </section>
+
+      <section
+        class="section compare-section"
+        id="compare"
+        aria-labelledby="compare-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Pick the right kind of tool</p>
+            <h2 id="compare-title">Fosser sits beside <em>the stores.</em></h2>
+          </div>
+          <p>
+            Fosser uses F-Droid’s catalogue for discovery. The official F-Droid
+            app and Droid-ify are the places to browse repositories, install
+            apps and manage updates.
+          </p>
+        </div>
+        <div
+          class="table-scroll"
+          role="region"
+          aria-label="Comparison of Fosser, F-Droid and Droid-ify"
+          tabindex="0"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Tool</th>
+                <th scope="col">Main job</th>
+                <th scope="col">Install and update apps?</th>
+                <th scope="col">A good fit when…</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-fosser">
+                <th scope="row"><span class="table-mark">F</span> Fosser</th>
+                <td>Swipe-first discovery from the F-Droid catalogue</td>
+                <td>No. It saves ideas and opens listings.</td>
+                <td>
+                  You want a lightweight way to find and shortlist open-source
+                  apps.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <a href="https://f-droid.org/packages/org.fdroid.fdroid/"
+                    >F-Droid</a
+                  >
+                </th>
+                <td>Official libre-app catalogue and client</td>
+                <td>Yes. Browse, install and track updates.</td>
+                <td>
+                  You want the official client and its repository workflow.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <a href="https://droidify.app/">Droid-ify</a>
+                </th>
+                <td>Third-party F-Droid-compatible client</td>
+                <td>Yes. Browse and install apps; manage updates.</td>
+                <td>
+                  You prefer a different client interface or installation
+                  options.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="compare-sources">
+          <span>PROJECT SOURCES</span>
+          <a href="https://f-droid.org/en/">F-Droid</a>
+          <a href="https://droidify.app/">Droid-ify</a>
+          <a href="https://github.com/Droid-ify/client">Droid-ify source</a>
+        </div>
+      </section>
+
+      <section class="data-note" aria-labelledby="data-note-title">
+        <div class="data-note__icon" aria-hidden="true">↗</div>
+        <div>
+          <p class="eyebrow">Know what uses the network</p>
+          <h2 id="data-note-title">
+            Your swipes are local. The catalogue is online.
+          </h2>
+          <p>
+            Fosser fetches the signed F-Droid index, app icons and screenshots,
+            and may open web listings. The project describes the app as having
+            no account and no tracking; its swipe history and saved apps are
+            stored in a local database. Secure-connection failures in the in-app
+            web view are cancelled, not bypassed.
+          </p>
+          <a
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/blob/main/README.md#f-droid-data-source"
+            >Read the data-source notes <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section
+        class="section details-section"
+        id="details"
+        aria-labelledby="details-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">For the curious</p>
+            <h2 id="details-title">
+              Small app.<br /><em>Clear internals.</em>
+            </h2>
+          </div>
+          <p>
+            The catalogue parser streams F-Droid’s v2 index. Fosser stores app
+            data, saved apps and swipe history with Room, then ranks the unseen
+            catalogue using a small deterministic Kotlin engine.
+          </p>
+        </div>
+        <div class="project-facts">
+          <div><span>PLATFORM</span><b>Android 8.0+ · API 26</b></div>
+          <div><span>LANGUAGE</span><b>Kotlin · Jetpack Compose</b></div>
+          <div><span>CATALOGUE</span><b>Official F-Droid index v2</b></div>
+          <div><span>LICENSE</span><b>MIT</b></div>
+          <div>
+            <span>UNIT TESTS</span><b>28 listed in the project README</b>
+          </div>
+          <div><span>RELEASE</span><b>v1.0 · September 2026</b></div>
+        </div>
+        <div class="project-links">
+          <a
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/blob/main/README.md"
+            >Read the README <span>↗</span></a
+          >
+          <a
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/blob/main/app/src/main/java/org/fosser/app/data/remote/fdroid/FdroidIndexFetcher.kt"
+            >See the index fetcher <span>↗</span></a
+          >
+          <a
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/blob/main/app/src/main/java/org/fosser/app/domain/recommendation/RecommendationEngine.kt"
+            >See recommendation logic <span>↗</span></a
+          >
+          <a href="https://github.com/alejandro-piguave/TinderCloneCompose"
+            >See the UI project Fosser started from <span>↗</span></a
+          >
+          <a
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/blob/main/LICENSE"
+            >Read the MIT license <span>↗</span></a
+          >
+        </div>
+      </section>
+
+      <section class="closing" id="community" aria-labelledby="closing-title">
+        <img src="assets/fosser-icon.png" width="72" height="72" alt="" />
+        <p class="eyebrow">A small project for a wide catalogue</p>
+        <h2 id="closing-title">Find one worth<br /><em>keeping.</em></h2>
+        <p>Try the release, read the source, or help shape what comes next.</p>
+        <div class="closing__actions">
+          <a
+            class="button button--lime"
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser/releases/tag/v1.0"
+            >Get Fosser <span aria-hidden="true">↗</span></a
+          >
+          <a
+            class="button button--dark-outline"
+            href="https://github.com/Kenneth-Cho-InfoSec/Fosser"
+            >Explore on GitHub <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="closing__links">
+          <a href="https://github.com/Kenneth-Cho-InfoSec/Fosser/issues"
+            >Report an issue</a
+          >
+          <a href="https://github.com/Kenneth-Cho-InfoSec/Fosser"
+            >Contribute on GitHub</a
+          >
+          <a href="https://github.com/Kenneth-Cho-InfoSec/Fosser/releases"
+            >All releases</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand--footer" href="#top"
+        ><img src="assets/fosser-icon.png" width="36" height="36" alt="" /><span
+          >fosser<span class="brand__period">.</span></span
+        ></a
+      >
+      <span>Made for curious Android users.</span>
+      <a href="https://github.com/Kenneth-Cho-InfoSec/Fosser"
+        >Source on GitHub ↗</a
+      >
+    </footer>
+  </body>
+</html>
