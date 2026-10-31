@@ -215,7 +215,7 @@ h2 {
 
 h1 {
   max-width: 680px;
-  font-size: clamp(3.5rem, 7.7vw, 7.4rem);
+  font-size: clamp(3.5rem, 6.2vw, 6rem);
   line-height: 0.91;
 }
 
@@ -1425,11 +1425,11 @@ tbody tr:last-child td {
   }
 
   .deck-label--left {
-    left: 0.1rem;
+    display: none;
   }
 
   .deck-label--right {
-    right: 0.1rem;
+    display: none;
   }
 
   .hero__base {
